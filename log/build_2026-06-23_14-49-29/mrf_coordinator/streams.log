@@ -1,0 +1,19 @@
+[0.335s] Invoking command in '/home/nayanika/robotic_arm_ws/build/mrf_coordinator': AMENT_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs LD_LIBRARY_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/nayanika/robotic_arm_ws/build/mrf_coordinator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages:/home/nayanika/robotic_arm_ws/install/mrf_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build --no-deps symlink_data
+[0.473s] running develop
+[0.559s] running egg_info
+[0.559s] writing mrf_coordinator.egg-info/PKG-INFO
+[0.559s] writing dependency_links to mrf_coordinator.egg-info/dependency_links.txt
+[0.559s] writing entry points to mrf_coordinator.egg-info/entry_points.txt
+[0.559s] writing requirements to mrf_coordinator.egg-info/requires.txt
+[0.559s] writing top-level names to mrf_coordinator.egg-info/top_level.txt
+[0.560s] reading manifest file 'mrf_coordinator.egg-info/SOURCES.txt'
+[0.560s] writing manifest file 'mrf_coordinator.egg-info/SOURCES.txt'
+[0.561s] running build_ext
+[0.561s] Creating /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf-coordinator.egg-link (link to .)
+[0.562s] Installing conveyor script to /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/mrf_coordinator
+[0.562s] Installing coordinator script to /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/mrf_coordinator
+[0.562s] Installing object_manager script to /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/mrf_coordinator
+[0.562s] 
+[0.562s] Installed /home/nayanika/robotic_arm_ws/build/mrf_coordinator
+[0.562s] running symlink_data
+[0.575s] Invoked command in '/home/nayanika/robotic_arm_ws/build/mrf_coordinator' returned '0': AMENT_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs LD_LIBRARY_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/nayanika/robotic_arm_ws/build/mrf_coordinator/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages:/home/nayanika/robotic_arm_ws/install/mrf_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build --no-deps symlink_data

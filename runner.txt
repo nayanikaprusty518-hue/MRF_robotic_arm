@@ -1,0 +1,4 @@
+cd ~/GitHub/MRF_robotic_arm && colcon build --symlink-install
+source install/setup.bash
+export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$PWD/install/mrf_gazebo/share/mrf_gazebo/models
+ros2 launch mrf_bringup mrf_sim.launch.py

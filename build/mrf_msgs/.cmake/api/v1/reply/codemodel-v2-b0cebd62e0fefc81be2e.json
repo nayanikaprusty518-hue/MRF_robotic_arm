@@ -1,0 +1,258 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-28e0cbd1d4dff9d39ece.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "mrf_msgs__py",
+					"jsonFile" : "directory-mrf_msgs__py-6a71ac3a5171e101b9ef.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/nayanika/robotic_arm_ws/build/mrf_msgs/mrf_msgs__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "mrf_msgs__rs",
+					"jsonFile" : "directory-mrf_msgs__rs-4371afc8163f1d18eefc.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/nayanika/robotic_arm_ws/build/mrf_msgs/mrf_msgs__rs",
+					"targetIndexes" : 
+					[
+						16
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "mrf_msgs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_mrf_msgs_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_mrf_msgs_egg-20b87a52cc2150f6cfa2.json",
+					"name" : "ament_cmake_python_build_mrf_msgs_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_symlink_mrf_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_symlink_mrf_msgs-118c508b9f125aa01fa5.json",
+					"name" : "ament_cmake_python_symlink_mrf_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs-3caece6fea7bf1e04fea.json",
+					"name" : "mrf_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__cpp-94bec5f2b99ba999f5b4.json",
+					"name" : "mrf_msgs__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "mrf_msgs__py::@9b8cb1a8b7bd49ab6f73",
+					"jsonFile" : "target-mrf_msgs__py-13284f6548a46ad72f54.json",
+					"name" : "mrf_msgs__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_generator_c-48ce36c084014fca5215.json",
+					"name" : "mrf_msgs__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_generator_py-a8e79ca4e13735544722.json",
+					"name" : "mrf_msgs__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_c-eb6fc1d28b21009448bc.json",
+					"name" : "mrf_msgs__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_c__pyext-0b0387ee5e612ea8da2e.json",
+					"name" : "mrf_msgs__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_cpp-5115baccde45e72e4cc5.json",
+					"name" : "mrf_msgs__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_fastrtps_c-b410abe21eec40916fc7.json",
+					"name" : "mrf_msgs__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_fastrtps_c__pyext-59c2ef15dc5ae3317c4f.json",
+					"name" : "mrf_msgs__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_fastrtps_cpp-e8d7a5b744ea0bbda072.json",
+					"name" : "mrf_msgs__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_introspection_c-6e1c693f64a3484da73f.json",
+					"name" : "mrf_msgs__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_introspection_c__pyext-844df48beeb7c8ae08e3.json",
+					"name" : "mrf_msgs__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs__rosidl_typesupport_introspection_cpp-99bd912d547185b68dae.json",
+					"name" : "mrf_msgs__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "mrf_msgs__rs::@c210d9ab2bb7b43a144c",
+					"jsonFile" : "target-mrf_msgs__rs-b4e6168638551ba1a15b.json",
+					"name" : "mrf_msgs__rs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mrf_msgs_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mrf_msgs_uninstall-32371d8f16a3ab5db0a7.json",
+					"name" : "mrf_msgs_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-1e253ed8fd56c02256ae.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/nayanika/robotic_arm_ws/build/mrf_msgs",
+		"source" : "/home/nayanika/robotic_arm_ws/src/mrf_msgs"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

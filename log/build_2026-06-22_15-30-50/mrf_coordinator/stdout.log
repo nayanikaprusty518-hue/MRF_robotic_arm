@@ -1,0 +1,43 @@
+running develop
+Removing /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf-coordinator.egg-link (link to .)
+running egg_info
+writing ../../build/mrf_coordinator/mrf_coordinator.egg-info/PKG-INFO
+writing dependency_links to ../../build/mrf_coordinator/mrf_coordinator.egg-info/dependency_links.txt
+writing entry points to ../../build/mrf_coordinator/mrf_coordinator.egg-info/entry_points.txt
+writing requirements to ../../build/mrf_coordinator/mrf_coordinator.egg-info/requires.txt
+writing top-level names to ../../build/mrf_coordinator/mrf_coordinator.egg-info/top_level.txt
+reading manifest file '../../build/mrf_coordinator/mrf_coordinator.egg-info/SOURCES.txt'
+writing manifest file '../../build/mrf_coordinator/mrf_coordinator.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build
+creating /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib
+creating /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator
+copying mrf_coordinator/conveyor.py -> /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator
+copying mrf_coordinator/coordinator.py -> /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator
+copying mrf_coordinator/__init__.py -> /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator
+copying mrf_coordinator/ik.py -> /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator
+copying mrf_coordinator/object_manager.py -> /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator
+running install
+running install_lib
+creating /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator
+copying /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator/conveyor.py -> /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator
+copying /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator/coordinator.py -> /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator
+copying /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator/__init__.py -> /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator
+copying /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator/ik.py -> /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator
+copying /home/nayanika/robotic_arm_ws/build/mrf_coordinator/build/lib/mrf_coordinator/object_manager.py -> /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator
+byte-compiling /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator/conveyor.py to conveyor.cpython-310.pyc
+byte-compiling /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator/coordinator.py to coordinator.cpython-310.pyc
+byte-compiling /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator/ik.py to ik.cpython-310.pyc
+byte-compiling /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator/object_manager.py to object_manager.cpython-310.pyc
+running install_data
+copying resource/mrf_coordinator -> /home/nayanika/robotic_arm_ws/install/mrf_coordinator/share/ament_index/resource_index/packages
+copying package.xml -> /home/nayanika/robotic_arm_ws/install/mrf_coordinator/share/mrf_coordinator
+running install_egg_info
+Copying ../../build/mrf_coordinator/mrf_coordinator.egg-info to /home/nayanika/robotic_arm_ws/install/mrf_coordinator/lib/python3.10/site-packages/mrf_coordinator-0.1.0-py3.10.egg-info
+running install_scripts
+Installing conveyor script to /home/nayanika/robotic_arm_ws/install/mrf_coordinator/bin
+Installing coordinator script to /home/nayanika/robotic_arm_ws/install/mrf_coordinator/bin
+Installing object_manager script to /home/nayanika/robotic_arm_ws/install/mrf_coordinator/bin
+writing list of installed files to '/home/nayanika/robotic_arm_ws/build/mrf_coordinator/install.log'

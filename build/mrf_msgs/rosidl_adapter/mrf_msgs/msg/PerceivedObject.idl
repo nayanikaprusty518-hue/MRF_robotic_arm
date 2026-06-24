@@ -1,0 +1,40 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mrf_msgs/msg/PerceivedObject.msg
+// generated code does not contain a copyright notice
+
+#include "builtin_interfaces/msg/Time.idl"
+#include "geometry_msgs/msg/Pose.idl"
+#include "geometry_msgs/msg/Vector3.idl"
+
+module mrf_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      "A single object reported by the (simulated or real) perception layer." "\n"
+      "Mirrors the perception interface defined in guide.md sections 30-32.")
+    struct PerceivedObject {
+      @verbatim (language="comment", text=
+        "unique id, e.g. \"obj_001\"")
+      string object_id;
+
+      @verbatim (language="comment", text=
+        "\"plastic\", \"aluminum\", \"cardboard\", ...")
+      string category;
+
+      @verbatim (language="comment", text=
+        "full position + orientation in world frame")
+      geometry_msgs::msg::Pose pose;
+
+      @verbatim (language="comment", text=
+        "linear velocity (m/s), world frame")
+      geometry_msgs::msg::Vector3 velocity;
+
+      @verbatim (language="comment", text=
+        "0.0 .. 1.0")
+      double confidence;
+
+      @verbatim (language="comment", text=
+        "time the observation was made")
+      builtin_interfaces::msg::Time stamp;
+    };
+  };
+};

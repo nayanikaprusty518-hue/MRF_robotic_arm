@@ -1,0 +1,492 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="safety_fence">
+    <static>true</static>
+    <link name="link">
+      <visual name="post0_v">
+        <pose>-2.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post0_c">
+        <pose>-2.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post1_v">
+        <pose>-2.100 -0.950 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post1_c">
+        <pose>-2.100 -0.950 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post2_v">
+        <pose>-2.100 -0.150 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post2_c">
+        <pose>-2.100 -0.150 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post3_v">
+        <pose>-2.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post3_c">
+        <pose>-2.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post4_v">
+        <pose>-1.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post4_c">
+        <pose>-1.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post5_v">
+        <pose>-1.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post5_c">
+        <pose>-1.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post6_v">
+        <pose>-0.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post6_c">
+        <pose>-0.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post7_v">
+        <pose>-0.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post7_c">
+        <pose>-0.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post8_v">
+        <pose>0.900 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post8_c">
+        <pose>0.900 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post9_v">
+        <pose>0.900 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post9_c">
+        <pose>0.900 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post10_v">
+        <pose>1.900 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post10_c">
+        <pose>1.900 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post11_v">
+        <pose>1.900 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post11_c">
+        <pose>1.900 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post12_v">
+        <pose>2.300 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post12_c">
+        <pose>2.300 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post13_v">
+        <pose>2.300 -0.950 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post13_c">
+        <pose>2.300 -0.950 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post14_v">
+        <pose>2.300 -0.150 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post14_c">
+        <pose>2.300 -0.150 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="post15_v">
+        <pose>2.300 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <collision name="post15_c">
+        <pose>2.300 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.090 0.090 1.200</size></box></geometry>
+      </collision>
+      <visual name="n0_panel_v">
+        <pose>-1.600 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="n0_panel_c">
+        <pose>-1.600 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="n0_rtop_v">
+        <pose>-1.600 1.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n0_rbot_v">
+        <pose>-1.600 1.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s0_panel_v">
+        <pose>-1.600 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="s0_panel_c">
+        <pose>-1.600 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="s0_rtop_v">
+        <pose>-1.600 -2.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s0_rbot_v">
+        <pose>-1.600 -2.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n1_panel_v">
+        <pose>-0.600 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="n1_panel_c">
+        <pose>-0.600 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="n1_rtop_v">
+        <pose>-0.600 1.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n1_rbot_v">
+        <pose>-0.600 1.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s1_panel_v">
+        <pose>-0.600 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="s1_panel_c">
+        <pose>-0.600 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="s1_rtop_v">
+        <pose>-0.600 -2.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s1_rbot_v">
+        <pose>-0.600 -2.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n2_panel_v">
+        <pose>0.400 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="n2_panel_c">
+        <pose>0.400 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="n2_rtop_v">
+        <pose>0.400 1.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n2_rbot_v">
+        <pose>0.400 1.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s2_panel_v">
+        <pose>0.400 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="s2_panel_c">
+        <pose>0.400 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="s2_rtop_v">
+        <pose>0.400 -2.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s2_rbot_v">
+        <pose>0.400 -2.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n3_panel_v">
+        <pose>1.400 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="n3_panel_c">
+        <pose>1.400 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="n3_rtop_v">
+        <pose>1.400 1.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n3_rbot_v">
+        <pose>1.400 1.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s3_panel_v">
+        <pose>1.400 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="s3_panel_c">
+        <pose>1.400 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.910 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="s3_rtop_v">
+        <pose>1.400 -2.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s3_rbot_v">
+        <pose>1.400 -2.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.910 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n4_panel_v">
+        <pose>2.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.310 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="n4_panel_c">
+        <pose>2.100 1.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.310 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="n4_rtop_v">
+        <pose>2.100 1.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.310 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="n4_rbot_v">
+        <pose>2.100 1.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.310 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s4_panel_v">
+        <pose>2.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.310 0.020 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="s4_panel_c">
+        <pose>2.100 -2.000 0.600 0 0 0</pose>
+        <geometry><box><size>0.310 0.020 1.000</size></box></geometry>
+      </collision>
+      <visual name="s4_rtop_v">
+        <pose>2.100 -2.000 1.160 0 0 0</pose>
+        <geometry><box><size>0.310 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="s4_rbot_v">
+        <pose>2.100 -2.000 0.100 0 0 0</pose>
+        <geometry><box><size>0.310 0.050 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="w0_panel_v">
+        <pose>-2.100 0.425 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 1.060 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="w0_panel_c">
+        <pose>-2.100 0.425 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 1.060 1.000</size></box></geometry>
+      </collision>
+      <visual name="w0_rtop_v">
+        <pose>-2.100 0.425 1.160 0 0 0</pose>
+        <geometry><box><size>0.050 1.060 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="w0_rbot_v">
+        <pose>-2.100 0.425 0.100 0 0 0</pose>
+        <geometry><box><size>0.050 1.060 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="e0_panel_v">
+        <pose>2.300 0.425 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 1.060 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="e0_panel_c">
+        <pose>2.300 0.425 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 1.060 1.000</size></box></geometry>
+      </collision>
+      <visual name="e0_rtop_v">
+        <pose>2.300 0.425 1.160 0 0 0</pose>
+        <geometry><box><size>0.050 1.060 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="e0_rbot_v">
+        <pose>2.300 0.425 0.100 0 0 0</pose>
+        <geometry><box><size>0.050 1.060 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="w2_panel_v">
+        <pose>-2.100 -1.475 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 0.960 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="w2_panel_c">
+        <pose>-2.100 -1.475 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 0.960 1.000</size></box></geometry>
+      </collision>
+      <visual name="w2_rtop_v">
+        <pose>-2.100 -1.475 1.160 0 0 0</pose>
+        <geometry><box><size>0.050 0.960 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="w2_rbot_v">
+        <pose>-2.100 -1.475 0.100 0 0 0</pose>
+        <geometry><box><size>0.050 0.960 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="e2_panel_v">
+        <pose>2.300 -1.475 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 0.960 1.000</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/WireMesh</name>
+        </script></material>
+      </visual>
+      <collision name="e2_panel_c">
+        <pose>2.300 -1.475 0.600 0 0 0</pose>
+        <geometry><box><size>0.020 0.960 1.000</size></box></geometry>
+      </collision>
+      <visual name="e2_rtop_v">
+        <pose>2.300 -1.475 1.160 0 0 0</pose>
+        <geometry><box><size>0.050 0.960 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="e2_rbot_v">
+        <pose>2.300 -1.475 0.100 0 0 0</pose>
+        <geometry><box><size>0.050 0.960 0.050</size></box></geometry>
+        <material><ambient>1.0 0.45 0.02 1.0</ambient><diffuse>1.0 0.45 0.02 1.0</diffuse></material>
+      </visual>
+      <visual name="sign1_v">
+        <pose>0.400 -2.022 0.620 0 0 0</pose>
+        <geometry><box><size>0.30 0.02 0.375</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/CautionSign</name>
+        </script></material>
+      </visual>
+      <visual name="sign2_v">
+        <pose>1.400 -2.022 0.620 0 0 0</pose>
+        <geometry><box><size>0.30 0.02 0.375</size></box></geometry>
+        <material><script>
+          <uri>model://safety_fence/materials/scripts</uri>
+          <uri>model://safety_fence/materials/textures</uri>
+          <name>MRF/CautionSign</name>
+        </script></material>
+      </visual>
+    </link>
+  </model>
+</sdf>

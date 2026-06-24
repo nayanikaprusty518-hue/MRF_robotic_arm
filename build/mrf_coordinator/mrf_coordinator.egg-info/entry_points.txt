@@ -1,0 +1,5 @@
+[console_scripts]
+conveyor = mrf_coordinator.conveyor:main
+coordinator = mrf_coordinator.coordinator:main
+object_manager = mrf_coordinator.object_manager:main
+

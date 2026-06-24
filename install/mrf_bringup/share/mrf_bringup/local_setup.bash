@@ -1,0 +1,1 @@
+/home/nayanika/robotic_arm_ws/build/mrf_bringup/ament_cmake_environment_hooks/local_setup.bash

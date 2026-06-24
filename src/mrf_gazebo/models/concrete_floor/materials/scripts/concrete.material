@@ -1,0 +1,19 @@
+material MRF/Concrete
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.45 0.45 0.45 1.0
+      diffuse 0.80 0.80 0.80 1.0
+      specular 0.02 0.02 0.02 1.0 1.0
+
+      texture_unit
+      {
+        texture concrete.png
+        filtering trilinear
+        scale 0.1 0.1
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+/home/nayanika/robotic_arm_ws/build/mrf_msgs/rosidl_typesupport_fastrtps_c/mrf_msgs/msg/detail/perceived_object__rosidl_typesupport_fastrtps_c.h

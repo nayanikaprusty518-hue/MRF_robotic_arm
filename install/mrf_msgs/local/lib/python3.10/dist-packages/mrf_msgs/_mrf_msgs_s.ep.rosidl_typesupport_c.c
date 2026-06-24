@@ -1,0 +1,1 @@
+/home/nayanika/robotic_arm_ws/build/mrf_msgs/rosidl_generator_py/mrf_msgs/_mrf_msgs_s.ep.rosidl_typesupport_c.c

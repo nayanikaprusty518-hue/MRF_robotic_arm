@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="mrf_sorting">
+
+    <gravity>0 0 -9.81</gravity>
+
+    <physics name="default" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+
+    <scene>
+      <ambient>0.32 0.32 0.34 1</ambient>
+      <background>0.70 0.72 0.75 1</background>
+      <shadows>false</shadows>
+      <!-- procedural blue sky with drifting white clouds (rendered by the
+           Gazebo client; replaces the plain grey background outside) -->
+      <sky>
+        <clouds>
+          <speed>8</speed>
+          <direction>1.2</direction>
+          <humidity>0.55</humidity>
+          <mean_size>0.7</mean_size>
+        </clouds>
+      </sky>
+    </scene>
+
+    <plugin name="gazebo_ros_state" filename="libgazebo_ros_state.so">
+      <ros><namespace>/gazebo</namespace></ros>
+      <update_rate>50.0</update_rate>
+    </plugin>
+
+    <!-- soft, shadowless key light (replaces the default sun) -->
+    <light name="sun" type="directional">
+      <pose>0 0 12 0 0 0</pose>
+      <diffuse>0.42 0.42 0.40 1</diffuse>
+      <specular>0.05 0.05 0.05 1</specular>
+      <direction>-0.3 0.35 -1</direction>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <!-- industrial concrete floor (replaces the default grey ground_plane) -->
+    <include><uri>model://concrete_floor</uri></include>
+
+    <light name="fill_light" type="directional">
+      <pose>-3 -3 6 0 0 0</pose>
+      <diffuse>0.12 0.12 0.13 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <direction>0.4 0.4 -1</direction>
+      <cast_shadows>false</cast_shadows>
+    </light>
+
+    <!-- ================= robot pedestals (white stands) ================= -->
+    <model name="robot_pedestal">
+      <static>true</static>
+      <pose>0 0 0.4 0 0 0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><box><size>0.5 0.5 0.8</size></box></geometry>
+          <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><box><size>0.5 0.5 0.8</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- pedestal for the second arm (across the belt) -->
+    <model name="robot_pedestal2">
+      <static>true</static>
+      <pose>0 -1.10 0.4 0 0 0</pose>
+      <link name="link">
+        <visual name="v">
+          <geometry><box><size>0.5 0.5 0.8</size></box></geometry>
+          <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
+        </visual>
+        <collision name="c">
+          <geometry><box><size>0.5 0.5 0.8</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ================= conveyor belt ================= -->
+    <model name="conveyor_belt">
+      <static>true</static>
+      <pose>0 -0.55 0 0 0 0</pose>
+      <link name="link">
+        <!-- belt surface (top at z=0.85) -->
+        <visual name="belt">
+          <pose>0 0 0.825 0 0 0</pose>
+          <geometry><box><size>3.0 0.5 0.05</size></box></geometry>
+          <material><ambient>0.2 0.2 0.2 1</ambient><diffuse>0.25 0.25 0.25 1</diffuse></material>
+        </visual>
+        <collision name="belt_c">
+          <pose>0 0 0.825 0 0 0</pose>
+          <geometry><box><size>3.0 0.5 0.05</size></box></geometry>
+        </collision>
+        <!-- side rails -->
+        <visual name="rail_n">
+          <pose>0 0.26 0.86 0 0 0</pose>
+          <geometry><box><size>3.0 0.03 0.06</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+        <visual name="rail_s">
+          <pose>0 -0.26 0.86 0 0 0</pose>
+          <geometry><box><size>3.0 0.03 0.06</size></box></geometry>
+          <material><ambient>0.6 0.6 0.6 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+        <!-- legs -->
+        <visual name="leg1"><pose>-1.4 0 0.4 0 0 0</pose><geometry><box><size>0.06 0.5 0.8</size></box></geometry><material><ambient>0.5 0.5 0.5 1</ambient></material></visual>
+        <visual name="leg2"><pose>1.4 0 0.4 0 0 0</pose><geometry><box><size>0.06 0.5 0.8</size></box></geometry><material><ambient>0.5 0.5 0.5 1</ambient></material></visual>
+      </link>
+    </model>
+
+    <!-- ================= collection bins =================
+         HOLLOW (floor + 4 thin walls, no solid block) so objects rest INSIDE.
+         Placed BESIDE each arm (offset along the belt, on the arm's own row,
+         clear of the belt) so the arm swings ~75 deg instead of ~140 deg. -->
+    <model name="bin_plastic">
+      <static>true</static>
+      <pose>-0.60 0.0 0.0 0 0 0</pose>
+      <link name="link">
+        <visual name="floor"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
+        <collision name="floor_c"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry></collision>
+        <visual name="w1"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
+        <collision name="w1c"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
+        <visual name="w2"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
+        <collision name="w2c"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
+        <visual name="w3"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
+        <collision name="w3c"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
+        <visual name="w4"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
+        <collision name="w4c"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
+      </link>
+    </model>
+
+    <model name="bin_aluminum">
+      <static>true</static>
+      <pose>0.60 -1.10 0.0 0 0 0</pose>
+      <link name="link">
+        <visual name="floor"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+        <collision name="floor_c"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry></collision>
+        <visual name="w1"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+        <collision name="w1c"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
+        <visual name="w2"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+        <collision name="w2c"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
+        <visual name="w3"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+        <collision name="w3c"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
+        <visual name="w4"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
+        <collision name="w4c"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
+      </link>
+    </model>
+
+    <!-- reject bin at the END of the belt: catches everything the arms leave
+         on the line (the non-target golden cubes, plus any genuine misses). -->
+    <model name="bin_reject">
+      <static>true</static>
+      <pose>1.80 -0.55 0.0 0 0 0</pose>
+      <link name="link">
+        <visual name="floor"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.60 0.60 0.04</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
+        <collision name="floor_c"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.60 0.60 0.04</size></box></geometry></collision>
+        <visual name="w1"><pose>0 0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
+        <collision name="w1c"><pose>0 0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry></collision>
+        <visual name="w2"><pose>0 -0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
+        <collision name="w2c"><pose>0 -0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry></collision>
+        <visual name="w3"><pose>0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
+        <collision name="w3c"><pose>0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry></collision>
+        <visual name="w4"><pose>-0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
+        <collision name="w4c"><pose>-0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry></collision>
+      </link>
+    </model>
+    <!-- wire-mesh safety guarding around the cell -->
+    <include><uri>model://safety_fence</uri></include>
+    <!-- WAREHOUSE BEGIN -->
+    <include><uri>model://warehouse</uri></include>
+    <light name="pendant0" type="point">
+      <pose>-3 -3 3.40 0 0 0</pose>
+      <diffuse>0.22 0.21 0.19 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation><range>9</range><constant>0.6</constant><linear>0.18</linear><quadratic>0.04</quadratic></attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <light name="pendant1" type="point">
+      <pose>-3 3 3.40 0 0 0</pose>
+      <diffuse>0.22 0.21 0.19 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation><range>9</range><constant>0.6</constant><linear>0.18</linear><quadratic>0.04</quadratic></attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <light name="pendant2" type="point">
+      <pose>0 -3 3.40 0 0 0</pose>
+      <diffuse>0.22 0.21 0.19 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation><range>9</range><constant>0.6</constant><linear>0.18</linear><quadratic>0.04</quadratic></attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <light name="pendant3" type="point">
+      <pose>0 3 3.40 0 0 0</pose>
+      <diffuse>0.22 0.21 0.19 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation><range>9</range><constant>0.6</constant><linear>0.18</linear><quadratic>0.04</quadratic></attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <light name="pendant4" type="point">
+      <pose>3 -3 3.40 0 0 0</pose>
+      <diffuse>0.22 0.21 0.19 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation><range>9</range><constant>0.6</constant><linear>0.18</linear><quadratic>0.04</quadratic></attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <light name="pendant5" type="point">
+      <pose>3 3 3.40 0 0 0</pose>
+      <diffuse>0.22 0.21 0.19 1</diffuse>
+      <specular>0.02 0.02 0.02 1</specular>
+      <attenuation><range>9</range><constant>0.6</constant><linear>0.18</linear><quadratic>0.04</quadratic></attenuation>
+      <cast_shadows>false</cast_shadows>
+    </light>
+    <!-- WAREHOUSE END -->
+
+
+
+
+
+
+  </world>
+</sdf>

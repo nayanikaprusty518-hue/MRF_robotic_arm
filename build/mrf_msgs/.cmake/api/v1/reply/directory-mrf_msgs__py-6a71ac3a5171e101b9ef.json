@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "mrf_msgs__py",
+		"source" : "/home/nayanika/robotic_arm_ws/build/mrf_msgs/mrf_msgs__py"
+	}
+}

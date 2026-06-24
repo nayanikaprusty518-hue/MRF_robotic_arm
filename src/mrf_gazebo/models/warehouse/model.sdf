@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="warehouse">
+    <static>true</static>
+    <link name="link">
+      <visual name="wall_n_v">
+        <pose>0 6.0 2.25 0 0 0</pose>
+        <geometry><box><size>12.4 0.2 4.5</size></box></geometry>
+        <material><script>
+          <uri>model://warehouse/materials/scripts</uri>
+          <uri>model://warehouse/materials/textures</uri>
+          <name>MRF/WallConcrete</name></script></material>
+      </visual>
+      <collision name="wall_n_c">
+        <pose>0 6.0 2.25 0 0 0</pose>
+        <geometry><box><size>12.4 0.2 4.5</size></box></geometry>
+      </collision>
+      <visual name="wall_s_v">
+        <pose>0 -6.0 2.25 0 0 0</pose>
+        <geometry><box><size>12.4 0.2 4.5</size></box></geometry>
+        <material><script>
+          <uri>model://warehouse/materials/scripts</uri>
+          <uri>model://warehouse/materials/textures</uri>
+          <name>MRF/WallConcrete</name></script></material>
+      </visual>
+      <collision name="wall_s_c">
+        <pose>0 -6.0 2.25 0 0 0</pose>
+        <geometry><box><size>12.4 0.2 4.5</size></box></geometry>
+      </collision>
+      <visual name="wall_e_v">
+        <pose>6.0 0 2.25 0 0 0</pose>
+        <geometry><box><size>0.2 12.4 4.5</size></box></geometry>
+        <material><script>
+          <uri>model://warehouse/materials/scripts</uri>
+          <uri>model://warehouse/materials/textures</uri>
+          <name>MRF/WallConcrete</name></script></material>
+      </visual>
+      <collision name="wall_e_c">
+        <pose>6.0 0 2.25 0 0 0</pose>
+        <geometry><box><size>0.2 12.4 4.5</size></box></geometry>
+      </collision>
+      <visual name="wall_w_v">
+        <pose>-6.0 0 2.25 0 0 0</pose>
+        <geometry><box><size>0.2 12.4 4.5</size></box></geometry>
+        <material><script>
+          <uri>model://warehouse/materials/scripts</uri>
+          <uri>model://warehouse/materials/textures</uri>
+          <name>MRF/WallConcrete</name></script></material>
+      </visual>
+      <collision name="wall_w_c">
+        <pose>-6.0 0 2.25 0 0 0</pose>
+        <geometry><box><size>0.2 12.4 4.5</size></box></geometry>
+      </collision>
+      <visual name="roof_v">
+        <pose>0 0 4.575 0 0 0</pose>
+        <geometry><box><size>12.4 12.4 0.15</size></box></geometry>
+        <material><ambient>0.32 0.33 0.35 1</ambient><diffuse>0.42 0.43 0.46 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="truss_x0_v">
+        <pose>0 -4 4.2 0 0 0</pose>
+        <geometry><box><size>12.0 0.1 0.22</size></box></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="truss_x1_v">
+        <pose>0 0 4.2 0 0 0</pose>
+        <geometry><box><size>12.0 0.1 0.22</size></box></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="truss_x2_v">
+        <pose>0 4 4.2 0 0 0</pose>
+        <geometry><box><size>12.0 0.1 0.22</size></box></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="truss_y0_v">
+        <pose>-3 0 4.12 0 0 0</pose>
+        <geometry><box><size>0.1 12.0 0.22</size></box></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="truss_y1_v">
+        <pose>3 0 4.12 0 0 0</pose>
+        <geometry><box><size>0.1 12.0 0.22</size></box></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="rod0_v">
+        <pose>-3 -3 3.8 0 0 0</pose>
+        <geometry><cylinder><radius>0.018</radius><length>0.5</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="shade0_v">
+        <pose>-3 -3 3.55 0 0 0</pose>
+        <geometry><cylinder><radius>0.13</radius><length>0.1</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="lamp0_v">
+        <pose>-3 -3 3.5 0 0 0</pose>
+        <geometry><cylinder><radius>0.1</radius><length>0.025</length></cylinder></geometry>
+        <material><ambient>1 0.98 0.9 1</ambient><diffuse>1 0.98 0.9 1</diffuse><specular>0 0 0 1</specular><emissive>1 0.96 0.85 1</emissive></material>
+      </visual>
+      <visual name="rod1_v">
+        <pose>-3 3 3.8 0 0 0</pose>
+        <geometry><cylinder><radius>0.018</radius><length>0.5</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="shade1_v">
+        <pose>-3 3 3.55 0 0 0</pose>
+        <geometry><cylinder><radius>0.13</radius><length>0.1</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="lamp1_v">
+        <pose>-3 3 3.5 0 0 0</pose>
+        <geometry><cylinder><radius>0.1</radius><length>0.025</length></cylinder></geometry>
+        <material><ambient>1 0.98 0.9 1</ambient><diffuse>1 0.98 0.9 1</diffuse><specular>0 0 0 1</specular><emissive>1 0.96 0.85 1</emissive></material>
+      </visual>
+      <visual name="rod2_v">
+        <pose>0 -3 3.8 0 0 0</pose>
+        <geometry><cylinder><radius>0.018</radius><length>0.5</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="shade2_v">
+        <pose>0 -3 3.55 0 0 0</pose>
+        <geometry><cylinder><radius>0.13</radius><length>0.1</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="lamp2_v">
+        <pose>0 -3 3.5 0 0 0</pose>
+        <geometry><cylinder><radius>0.1</radius><length>0.025</length></cylinder></geometry>
+        <material><ambient>1 0.98 0.9 1</ambient><diffuse>1 0.98 0.9 1</diffuse><specular>0 0 0 1</specular><emissive>1 0.96 0.85 1</emissive></material>
+      </visual>
+      <visual name="rod3_v">
+        <pose>0 3 3.8 0 0 0</pose>
+        <geometry><cylinder><radius>0.018</radius><length>0.5</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="shade3_v">
+        <pose>0 3 3.55 0 0 0</pose>
+        <geometry><cylinder><radius>0.13</radius><length>0.1</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="lamp3_v">
+        <pose>0 3 3.5 0 0 0</pose>
+        <geometry><cylinder><radius>0.1</radius><length>0.025</length></cylinder></geometry>
+        <material><ambient>1 0.98 0.9 1</ambient><diffuse>1 0.98 0.9 1</diffuse><specular>0 0 0 1</specular><emissive>1 0.96 0.85 1</emissive></material>
+      </visual>
+      <visual name="rod4_v">
+        <pose>3 -3 3.8 0 0 0</pose>
+        <geometry><cylinder><radius>0.018</radius><length>0.5</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="shade4_v">
+        <pose>3 -3 3.55 0 0 0</pose>
+        <geometry><cylinder><radius>0.13</radius><length>0.1</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="lamp4_v">
+        <pose>3 -3 3.5 0 0 0</pose>
+        <geometry><cylinder><radius>0.1</radius><length>0.025</length></cylinder></geometry>
+        <material><ambient>1 0.98 0.9 1</ambient><diffuse>1 0.98 0.9 1</diffuse><specular>0 0 0 1</specular><emissive>1 0.96 0.85 1</emissive></material>
+      </visual>
+      <visual name="rod5_v">
+        <pose>3 3 3.8 0 0 0</pose>
+        <geometry><cylinder><radius>0.018</radius><length>0.5</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="shade5_v">
+        <pose>3 3 3.55 0 0 0</pose>
+        <geometry><cylinder><radius>0.13</radius><length>0.1</length></cylinder></geometry>
+        <material><ambient>0.13 0.13 0.15 1</ambient><diffuse>0.18 0.18 0.20 1</diffuse><specular>0.05 0.05 0.05 1 4</specular></material>
+      </visual>
+      <visual name="lamp5_v">
+        <pose>3 3 3.5 0 0 0</pose>
+        <geometry><cylinder><radius>0.1</radius><length>0.025</length></cylinder></geometry>
+        <material><ambient>1 0.98 0.9 1</ambient><diffuse>1 0.98 0.9 1</diffuse><specular>0 0 0 1</specular><emissive>1 0.96 0.85 1</emissive></material>
+      </visual>
+    </link>
+  </model>
+</sdf>

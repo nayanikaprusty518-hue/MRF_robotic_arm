@@ -1,0 +1,60 @@
+// Black square wire-mesh panel: alpha-tested so the holes are truly see-through
+// (the robot arms are visible through the mesh) and rendered double-sided.
+material MRF/WireMesh
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.20 0.20 0.22 1.0
+      diffuse 0.20 0.20 0.22 1.0
+      specular 0.03 0.03 0.03 1.0 2.0
+
+      alpha_rejection greater_equal 128
+      cull_hardware none
+      cull_software none
+
+      texture_unit
+      {
+        texture wiremesh.png
+        filtering trilinear
+        scale 0.5 0.5
+      }
+    }
+  }
+}
+
+// Yellow CAUTION / authorized-personnel sign mounted on the panels.
+material MRF/CautionSign
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.75 0.75 0.75 1.0
+      diffuse 1.0 1.0 1.0 1.0
+      specular 0.1 0.1 0.1 1.0 6.0
+      cull_hardware none
+      cull_software none
+      texture_unit
+      {
+        texture caution.png
+        filtering trilinear
+      }
+    }
+  }
+}
+
+// Safety-orange frame for the posts and rails.
+material MRF/SafetyOrange
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.80 0.36 0.02 1.0
+      diffuse 1.00 0.45 0.02 1.0
+      specular 0.05 0.04 0.02 1.0 4.0
+    }
+  }
+}

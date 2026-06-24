@@ -1,0 +1,7 @@
+{
+  "package_name": "mrf_msgs",
+  "non_idl_tuples": [
+    "/home/nayanika/robotic_arm_ws/src/mrf_msgs:msg/PerceivedObject.msg",
+    "/home/nayanika/robotic_arm_ws/src/mrf_msgs:msg/PerceivedObjectArray.msg"
+  ]
+}

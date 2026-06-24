@@ -1,0 +1,36 @@
+[0.443s] Invoking command in '/home/nayanika/robotic_arm_ws/build/mrf_perception': AMENT_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs LD_LIBRARY_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/nayanika/robotic_arm_ws/build/mrf_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages:/home/nayanika/robotic_arm_ws/install/mrf_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/nayanika/robotic_arm_ws/build/mrf_perception/build
+[0.576s] running develop
+[0.668s] Removing /home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages/mrf-perception.egg-link (link to .)
+[0.682s] Invoked command in '/home/nayanika/robotic_arm_ws/build/mrf_perception' returned '0': AMENT_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs LD_LIBRARY_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/nayanika/robotic_arm_ws/build/mrf_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages:/home/nayanika/robotic_arm_ws/install/mrf_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/nayanika/robotic_arm_ws/build/mrf_perception/build
+[0.682s] Invoking command in '/home/nayanika/robotic_arm_ws/src/mrf_perception': AMENT_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs LD_LIBRARY_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/nayanika/robotic_arm_ws/build/mrf_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages:/home/nayanika/robotic_arm_ws/install/mrf_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrf_perception build --build-base /home/nayanika/robotic_arm_ws/build/mrf_perception/build install --record /home/nayanika/robotic_arm_ws/build/mrf_perception/install.log --single-version-externally-managed install_data --force
+[0.801s] running egg_info
+[0.802s] writing ../../build/mrf_perception/mrf_perception.egg-info/PKG-INFO
+[0.802s] writing dependency_links to ../../build/mrf_perception/mrf_perception.egg-info/dependency_links.txt
+[0.802s] writing entry points to ../../build/mrf_perception/mrf_perception.egg-info/entry_points.txt
+[0.802s] writing requirements to ../../build/mrf_perception/mrf_perception.egg-info/requires.txt
+[0.802s] writing top-level names to ../../build/mrf_perception/mrf_perception.egg-info/top_level.txt
+[0.803s] reading manifest file '../../build/mrf_perception/mrf_perception.egg-info/SOURCES.txt'
+[0.803s] writing manifest file '../../build/mrf_perception/mrf_perception.egg-info/SOURCES.txt'
+[0.803s] running build
+[0.803s] running build_py
+[0.804s] creating /home/nayanika/robotic_arm_ws/build/mrf_perception/build
+[0.804s] creating /home/nayanika/robotic_arm_ws/build/mrf_perception/build/lib
+[0.804s] creating /home/nayanika/robotic_arm_ws/build/mrf_perception/build/lib/mrf_perception
+[0.804s] copying mrf_perception/perception.py -> /home/nayanika/robotic_arm_ws/build/mrf_perception/build/lib/mrf_perception
+[0.804s] copying mrf_perception/__init__.py -> /home/nayanika/robotic_arm_ws/build/mrf_perception/build/lib/mrf_perception
+[0.804s] running install
+[0.804s] running install_lib
+[0.804s] creating /home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages/mrf_perception
+[0.804s] copying /home/nayanika/robotic_arm_ws/build/mrf_perception/build/lib/mrf_perception/perception.py -> /home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages/mrf_perception
+[0.804s] copying /home/nayanika/robotic_arm_ws/build/mrf_perception/build/lib/mrf_perception/__init__.py -> /home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages/mrf_perception
+[0.804s] byte-compiling /home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages/mrf_perception/perception.py to perception.cpython-310.pyc
+[0.805s] byte-compiling /home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages/mrf_perception/__init__.py to __init__.cpython-310.pyc
+[0.805s] running install_data
+[0.805s] copying resource/mrf_perception -> /home/nayanika/robotic_arm_ws/install/mrf_perception/share/ament_index/resource_index/packages
+[0.805s] copying package.xml -> /home/nayanika/robotic_arm_ws/install/mrf_perception/share/mrf_perception
+[0.805s] running install_egg_info
+[0.806s] Copying ../../build/mrf_perception/mrf_perception.egg-info to /home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages/mrf_perception-0.1.0-py3.10.egg-info
+[0.807s] running install_scripts
+[0.818s] Installing perception script to /home/nayanika/robotic_arm_ws/install/mrf_perception/bin
+[0.818s] writing list of installed files to '/home/nayanika/robotic_arm_ws/build/mrf_perception/install.log'
+[0.830s] Invoked command in '/home/nayanika/robotic_arm_ws/src/mrf_perception' returned '0': AMENT_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs LD_LIBRARY_PATH=/home/nayanika/robotic_arm_ws/install/mrf_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/nayanika/robotic_arm_ws/build/mrf_perception/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nayanika/robotic_arm_ws/install/mrf_perception/lib/python3.10/site-packages:/home/nayanika/robotic_arm_ws/install/mrf_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mrf_perception build --build-base /home/nayanika/robotic_arm_ws/build/mrf_perception/build install --record /home/nayanika/robotic_arm_ws/build/mrf_perception/install.log --single-version-externally-managed install_data --force

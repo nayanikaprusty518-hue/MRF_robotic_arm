@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+mrf_coordinator/__init__.py
+mrf_coordinator/conveyor.py
+mrf_coordinator/coordinator.py
+mrf_coordinator/ik.py
+mrf_coordinator/object_manager.py
+mrf_coordinator.egg-info/PKG-INFO
+mrf_coordinator.egg-info/SOURCES.txt
+mrf_coordinator.egg-info/dependency_links.txt
+mrf_coordinator.egg-info/entry_points.txt
+mrf_coordinator.egg-info/requires.txt
+mrf_coordinator.egg-info/top_level.txt
+mrf_coordinator.egg-info/zip-safe
+resource/mrf_coordinator
