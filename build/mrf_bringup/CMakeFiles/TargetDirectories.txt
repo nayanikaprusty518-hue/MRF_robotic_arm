@@ -1,9 +1,0 @@
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/uninstall.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/mrf_bringup_uninstall.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/test.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/edit_cache.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/rebuild_cache.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/list_install_components.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/install.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/install/local.dir
-/home/nayanika/robotic_arm_ws/build/mrf_bringup/CMakeFiles/install/strip.dir

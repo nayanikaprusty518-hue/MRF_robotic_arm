@@ -1,9 +1,0 @@
-setup.py
-mrf_msgs/__init__.py
-mrf_msgs.egg-info/PKG-INFO
-mrf_msgs.egg-info/SOURCES.txt
-mrf_msgs.egg-info/dependency_links.txt
-mrf_msgs.egg-info/top_level.txt
-mrf_msgs/msg/__init__.py
-mrf_msgs/msg/_perceived_object.py
-mrf_msgs/msg/_perceived_object_array.py

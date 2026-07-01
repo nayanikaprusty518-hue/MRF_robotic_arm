@@ -1,0 +1,39 @@
+material MRF/CanLabel
+{
+  technique { pass {
+    ambient 0.55 0.55 0.55 1.0
+    diffuse 1.0 1.0 1.0 1.0
+    specular 0.8 0.8 0.8 1.0 60.0
+    texture_unit { texture can_label.png filtering trilinear }
+  } }
+}
+
+material MRF/BottleLabel
+{
+  technique { pass {
+    ambient 0.7 0.7 0.7 1.0
+    diffuse 1.0 1.0 1.0 1.0
+    specular 0.3 0.3 0.3 1.0 20.0
+    texture_unit { texture bottle_label.png filtering trilinear }
+  } }
+}
+
+material MRF/GlassLabel
+{
+  technique { pass {
+    ambient 0.7 0.7 0.7 1.0
+    diffuse 1.0 1.0 1.0 1.0
+    specular 0.2 0.2 0.2 1.0 10.0
+    texture_unit { texture glass_label.png filtering trilinear }
+  } }
+}
+
+material MRF/Cardboard
+{
+  technique { pass {
+    ambient 0.55 0.45 0.32 1.0
+    diffuse 0.8 0.65 0.45 1.0
+    specular 0.04 0.04 0.04 1.0 2.0
+    texture_unit { texture cardboard.png filtering trilinear }
+  } }
+}

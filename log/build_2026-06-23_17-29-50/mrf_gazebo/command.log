@@ -1,4 +1,0 @@
-Invoking command in '/home/nayanika/robotic_arm_ws/build/mrf_gazebo': CMAKE_PREFIX_PATH=/home/nayanika/robot_ws/install/arm_gazebo:/opt/ros/humble /usr/bin/cmake --build /home/nayanika/robotic_arm_ws/build/mrf_gazebo -- -j24 -l24
-Invoked command in '/home/nayanika/robotic_arm_ws/build/mrf_gazebo' returned '0': CMAKE_PREFIX_PATH=/home/nayanika/robot_ws/install/arm_gazebo:/opt/ros/humble /usr/bin/cmake --build /home/nayanika/robotic_arm_ws/build/mrf_gazebo -- -j24 -l24
-Invoking command in '/home/nayanika/robotic_arm_ws/build/mrf_gazebo': CMAKE_PREFIX_PATH=/home/nayanika/robot_ws/install/arm_gazebo:/opt/ros/humble /usr/bin/cmake --install /home/nayanika/robotic_arm_ws/build/mrf_gazebo
-Invoked command in '/home/nayanika/robotic_arm_ws/build/mrf_gazebo' returned '0': CMAKE_PREFIX_PATH=/home/nayanika/robot_ws/install/arm_gazebo:/opt/ros/humble /usr/bin/cmake --install /home/nayanika/robotic_arm_ws/build/mrf_gazebo

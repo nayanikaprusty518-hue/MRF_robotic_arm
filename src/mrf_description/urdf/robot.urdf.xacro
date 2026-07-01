@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Two MRF arms facing each other across the conveyor + ros2_control. -->
+<!-- Single MRF sorting arm + ros2_control. -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="kr_arm">
 
   <xacro:include filename="$(find mrf_description)/urdf/kr_arm.xacro"/>
@@ -7,15 +7,11 @@
   <!-- shared world frame -->
   <link name="world"/>
 
-  <!-- arm 1: plastic picker, mounted at origin, reaching the belt from +Y -->
+  <!-- single arm, mounted at origin, reaching the belt from +Y -->
   <xacro:kr_arm prefix="a1_" mount_x="0"  mount_y="0"     mount_z="0.80"
                 mount_yaw="0"       color="1.0 0.45 0.0 1.0"/>
 
-  <!-- arm 2: aluminum picker, facing arm 1 across the belt from -Y -->
-  <xacro:kr_arm prefix="a2_" mount_x="0"  mount_y="-1.10" mount_z="0.80"
-                mount_yaw="3.14159" color="1.0 0.55 0.1 1.0"/>
-
-  <!-- ros2_control: one GazeboSystem driving every joint of both arms -->
+  <!-- ros2_control: one GazeboSystem driving the arm joints -->
   <xacro:macro name="arm_jc" params="name">
     <joint name="${name}">
       <command_interface name="position"/>
@@ -29,9 +25,6 @@
     <xacro:arm_jc name="a1_joint1"/><xacro:arm_jc name="a1_joint2"/><xacro:arm_jc name="a1_joint3"/>
     <xacro:arm_jc name="a1_joint4"/><xacro:arm_jc name="a1_joint5"/><xacro:arm_jc name="a1_joint6"/>
     <xacro:arm_jc name="a1_finger1_joint"/><xacro:arm_jc name="a1_finger2_joint"/><xacro:arm_jc name="a1_finger3_joint"/>
-    <xacro:arm_jc name="a2_joint1"/><xacro:arm_jc name="a2_joint2"/><xacro:arm_jc name="a2_joint3"/>
-    <xacro:arm_jc name="a2_joint4"/><xacro:arm_jc name="a2_joint5"/><xacro:arm_jc name="a2_joint6"/>
-    <xacro:arm_jc name="a2_finger1_joint"/><xacro:arm_jc name="a2_finger2_joint"/><xacro:arm_jc name="a2_finger3_joint"/>
   </ros2_control>
 
   <gazebo>

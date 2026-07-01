@@ -64,21 +64,6 @@
       </link>
     </model>
 
-    <!-- pedestal for the second arm (across the belt) -->
-    <model name="robot_pedestal2">
-      <static>true</static>
-      <pose>0 -1.10 0.4 0 0 0</pose>
-      <link name="link">
-        <visual name="v">
-          <geometry><box><size>0.5 0.5 0.8</size></box></geometry>
-          <material><ambient>0.9 0.9 0.9 1</ambient><diffuse>0.95 0.95 0.95 1</diffuse></material>
-        </visual>
-        <collision name="c">
-          <geometry><box><size>0.5 0.5 0.8</size></box></geometry>
-        </collision>
-      </link>
-    </model>
-
     <!-- ================= conveyor belt ================= -->
     <model name="conveyor_belt">
       <static>true</static>
@@ -108,63 +93,6 @@
         <!-- legs -->
         <visual name="leg1"><pose>-1.4 0 0.4 0 0 0</pose><geometry><box><size>0.06 0.5 0.8</size></box></geometry><material><ambient>0.5 0.5 0.5 1</ambient></material></visual>
         <visual name="leg2"><pose>1.4 0 0.4 0 0 0</pose><geometry><box><size>0.06 0.5 0.8</size></box></geometry><material><ambient>0.5 0.5 0.5 1</ambient></material></visual>
-      </link>
-    </model>
-
-    <!-- ================= collection bins =================
-         HOLLOW (floor + 4 thin walls, no solid block) so objects rest INSIDE.
-         Placed BESIDE each arm (offset along the belt, on the arm's own row,
-         clear of the belt) so the arm swings ~75 deg instead of ~140 deg. -->
-    <model name="bin_plastic">
-      <static>true</static>
-      <pose>-0.60 0.0 0.0 0 0 0</pose>
-      <link name="link">
-        <visual name="floor"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
-        <collision name="floor_c"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry></collision>
-        <visual name="w1"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
-        <collision name="w1c"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
-        <visual name="w2"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
-        <collision name="w2c"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
-        <visual name="w3"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
-        <collision name="w3c"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
-        <visual name="w4"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.1 0.3 0.8 1</ambient><diffuse>0.15 0.4 0.95 1</diffuse></material></visual>
-        <collision name="w4c"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
-      </link>
-    </model>
-
-    <model name="bin_aluminum">
-      <static>true</static>
-      <pose>0.60 -1.10 0.0 0 0 0</pose>
-      <link name="link">
-        <visual name="floor"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
-        <collision name="floor_c"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.50 0.50 0.04</size></box></geometry></collision>
-        <visual name="w1"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
-        <collision name="w1c"><pose>0 0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
-        <visual name="w2"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
-        <collision name="w2c"><pose>0 -0.24 0.17 0 0 0</pose><geometry><box><size>0.50 0.02 0.30</size></box></geometry></collision>
-        <visual name="w3"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
-        <collision name="w3c"><pose>0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
-        <visual name="w4"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry><material><ambient>0.4 0.4 0.42 1</ambient><diffuse>0.5 0.5 0.52 1</diffuse></material></visual>
-        <collision name="w4c"><pose>-0.24 0 0.17 0 0 0</pose><geometry><box><size>0.02 0.50 0.30</size></box></geometry></collision>
-      </link>
-    </model>
-
-    <!-- reject bin at the END of the belt: catches everything the arms leave
-         on the line (the non-target golden cubes, plus any genuine misses). -->
-    <model name="bin_reject">
-      <static>true</static>
-      <pose>1.80 -0.55 0.0 0 0 0</pose>
-      <link name="link">
-        <visual name="floor"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.60 0.60 0.04</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
-        <collision name="floor_c"><pose>0 0 0.02 0 0 0</pose><geometry><box><size>0.60 0.60 0.04</size></box></geometry></collision>
-        <visual name="w1"><pose>0 0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
-        <collision name="w1c"><pose>0 0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry></collision>
-        <visual name="w2"><pose>0 -0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
-        <collision name="w2c"><pose>0 -0.29 0.18 0 0 0</pose><geometry><box><size>0.60 0.02 0.36</size></box></geometry></collision>
-        <visual name="w3"><pose>0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
-        <collision name="w3c"><pose>0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry></collision>
-        <visual name="w4"><pose>-0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry><material><ambient>0.45 0.32 0.12 1</ambient><diffuse>0.55 0.4 0.16 1</diffuse></material></visual>
-        <collision name="w4c"><pose>-0.29 0 0.18 0 0 0</pose><geometry><box><size>0.02 0.60 0.36</size></box></geometry></collision>
       </link>
     </model>
     <!-- wire-mesh safety guarding around the cell -->
@@ -214,6 +142,9 @@
       <cast_shadows>false</cast_shadows>
     </light>
     <!-- WAREHOUSE END -->
+    <!-- four colour-coded labeled recycling bins -->
+    <include><uri>model://recycle_bins</uri></include>
+
 
 
 

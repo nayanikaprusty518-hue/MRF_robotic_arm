@@ -71,35 +71,25 @@ def launch_setup(context, *args, **kwargs):
                     output='screen')
 
     jsb = spawner('joint_state_broadcaster')
-    ctrls = [spawner(n) for n in ('arm1_controller', 'gripper1_controller',
-                                  'arm2_controller', 'gripper2_controller')]
+    ctrls = [spawner(n) for n in ('arm1_controller', 'gripper1_controller')]
 
-    conveyor = Node(package='mrf_coordinator', executable='conveyor', output='screen')
+    # single arm clears every item -> slower belt + wider spacing so it keeps up
+    conveyor = Node(package='mrf_coordinator', executable='conveyor', output='screen',
+                    parameters=[{'state': 'RUNNING_SLOW'}])
     object_manager = Node(package='mrf_coordinator', executable='object_manager',
                           output='screen',
-                          parameters=[{'spawn_period': 7.0}])
+                          parameters=[{'spawn_period': 9.0}])
     perception = Node(package='mrf_perception', executable='perception', output='screen')
 
-    # Arm 1 — plastic picker, mounted at origin, picks slightly upstream.
+    # Single arm sorts all four waste types into their colour-coded bins.
     coord1 = Node(package='mrf_coordinator', executable='coordinator',
                   name='coordinator_arm1', output='screen', parameters=[{
                       'arm_name': 'arm1', 'joint_prefix': 'a1_',
                       'arm_topic': '/arm1_controller/joint_trajectory',
                       'grip_topic': '/gripper1_controller/joint_trajectory',
-                      'target_categories': ['plastic'],
+                      'target_categories': ['plastic', 'metal', 'glass', 'paper'],
                       'base_x': 0.0, 'base_y': 0.0, 'base_z': 0.80, 'base_yaw': 0.0,
-                      'pick_x': -0.15, 'belt_y': -0.55,
-                      'bin_x': -0.60, 'bin_y': 0.0}])
-    # Arm 2 — aluminum picker, facing across the belt, picks slightly downstream.
-    coord2 = Node(package='mrf_coordinator', executable='coordinator',
-                  name='coordinator_arm2', output='screen', parameters=[{
-                      'arm_name': 'arm2', 'joint_prefix': 'a2_',
-                      'arm_topic': '/arm2_controller/joint_trajectory',
-                      'grip_topic': '/gripper2_controller/joint_trajectory',
-                      'target_categories': ['aluminum'],
-                      'base_x': 0.0, 'base_y': -1.10, 'base_z': 0.80, 'base_yaw': 3.14159,
-                      'pick_x': 0.15, 'belt_y': -0.55,
-                      'bin_x': 0.60, 'bin_y': -1.10}])
+                      'pick_x': 0.0, 'belt_y': -0.55}])
 
     return [
         gazebo,
@@ -112,7 +102,7 @@ def launch_setup(context, *args, **kwargs):
         conveyor,
         object_manager,
         perception,
-        TimerAction(period=13.0, actions=[coord1, coord2]),
+        TimerAction(period=13.0, actions=[coord1]),
     ]
 
 

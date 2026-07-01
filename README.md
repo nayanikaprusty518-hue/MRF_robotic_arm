@@ -1,43 +1,52 @@
 # MRF Sorting Simulation
 
 A ROS 2 Humble + Gazebo Classic 11 simulation of a **Material Recovery Facility
-(MRF)** sorting cell, built to the design assumptions in [guide.md](guide.md)
-(sections 27–40) and the reference image: an orange industrial arm on a white
-pedestal recovers selected materials from a never-stopping conveyor into
-labelled bins.
+(MRF)** sorting cell: a single industrial arm on a conveyor line picks four kinds
+of recyclable waste and sorts each into its own colour-coded bin, inside a
+guarded warehouse environment.
 
 ![reference](image.png)
 
 ## What it does
 
-- A conveyor carries randomly-placed objects (rotated, offset, varied spacing —
-  *not* tidy rows). **The belt never stops** (§33).
-- Objects are generated with a **ground-truth category** baked in at spawn time
-  (green cylinder = `plastic`, grey cube = `aluminum`, tan box = `cardboard`).
-- A **simulated perception layer** republishes Gazebo ground truth through a
-  detector-agnostic interface (`mrf_msgs/PerceivedObjectArray`). The robots only
-  ever talk to this interface — never to Gazebo or the generator (§30–32), so
-  the perception node can later be swapped for YOLO/RT-DETR/etc.
-- **Two arms face each other across the belt.** Arm 1 recovers `plastic` into
-  the blue bin; Arm 2 (downstream, offset in X) recovers `aluminum` into its own
-  bin. Each is an independent coordinator instance.
-- **Moving-belt intercept**: each arm hovers over its pick point and only
-  commits to (claims) an object once it arrives directly underneath, so the belt
-  and every other object keep flowing the whole time. Only the object actually
-  being grasped pauses — because the arm is holding it.
-- Everything else flows past. Objects that leave the work envelope, or that pass
-  while an arm is busy, are counted **MISSED** — by design (§38).
+- A never-stopping conveyor carries randomly-placed objects (rotated, offset,
+  varied spacing — not tidy rows).
+- Objects are generated with a **ground-truth category** baked in at spawn time;
+  a **simulated perception layer** republishes it through a detector-agnostic
+  interface (`mrf_msgs/PerceivedObjectArray`). The robot only ever talks to that
+  interface — never to Gazebo or the generator — so it can later be swapped for
+  a real detector (YOLO/RT-DETR/…).
+- A **single 6-DOF arm** (with a 3-finger claw) intercepts each item as it
+  arrives under the pick point and sorts it into the matching bin:
+
+  | Waste type | Object | Bin |
+  |---|---|---|
+  | Plastic | clear PET bottle | **Blue — PLASTIC** |
+  | Metal | aluminium soda can | **Yellow — METAL** |
+  | Glass | green glass bottle | **Green — GLASS** |
+  | Paper | kraft carton | **Brown — PAPER** |
+
+- The belt speed and spawn interval are balanced so the single arm clears every
+  item without misses.
+
+## Scene / aesthetics
+
+- Textured **concrete floor**, a **warehouse shell** (concrete walls, truss roof,
+  pendant lights), a **wire-mesh safety fence** with orange posts and CAUTION
+  signs, a procedural **blue sky with clouds**, and soft diffuse lighting.
+- Realistic objects: translucent glossy glass/plastic, metallic cans with wrapped
+  labels, kraft cardboard cartons.
 
 ## Packages
 
 | package | role |
 |---|---|
 | `mrf_msgs` | `PerceivedObject` / `PerceivedObjectArray` perception interface |
-| `mrf_description` | arm xacro **macro** (6R + spherical wrist), instantiated twice; ros2_control |
-| `mrf_gazebo` | world: two pedestals, conveyor, plastic + aluminum bins |
+| `mrf_description` | arm xacro (6R + spherical wrist, claw gripper) + ros2_control |
+| `mrf_gazebo` | world + models: `concrete_floor`, `warehouse`, `safety_fence`, `recycle_bins`, `recyclables` |
 | `mrf_perception` | simulated ground-truth perception layer |
-| `mrf_coordinator` | object generator, conveyor, IK, scheduler/executor (one per arm) |
-| `mrf_bringup` | top-level launch (spawns both arms + both coordinators) |
+| `mrf_coordinator` | object generator, conveyor, closed-form IK, scheduler/executor |
+| `mrf_bringup` | top-level launch |
 
 ## Build
 
@@ -54,38 +63,29 @@ source /opt/ros/humble/setup.bash
 source install/setup.bash
 export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$PWD/install/mrf_gazebo/share/mrf_gazebo/models
 
-# two arms: arm1 -> plastic bin, arm2 -> aluminum bin
-ros2 launch mrf_bringup mrf_sim.launch.py
-
-# headless
-ros2 launch mrf_bringup mrf_sim.launch.py gui:=false
+ros2 launch mrf_bringup mrf_sim.launch.py           # GUI
+ros2 launch mrf_bringup mrf_sim.launch.py gui:=false  # headless
 ```
-
-Each arm is configured entirely by parameters on its `coordinator` instance
-(`joint_prefix`, `arm_topic`, `base_x/y/z/yaw`, `pick_x`, `bin_x/y`,
-`target_categories`) — see [mrf_sim.launch.py](src/mrf_bringup/launch/mrf_sim.launch.py).
-To add a third arm, instantiate `kr_arm` again in
-[robot.urdf.xacro](src/mrf_description/urdf/robot.urdf.xacro), add its controllers
-to [controllers.yaml](src/mrf_description/config/controllers.yaml), and launch
-one more coordinator.
 
 ## Useful topics
 
 ```bash
-ros2 topic echo /mrf/perception/objects     # the perception interface
-ros2 topic echo /mrf/coordinator/stats       # recovered / target / ignored counts
-ros2 topic echo /mrf/objects/stats           # spawned / on_belt / missed
-ros2 topic echo /mrf/conveyor/state          # RUNNING_FAST | MEDIUM | SLOW (never STOPPED)
-ros2 service call /mrf/conveyor/cycle_speed std_srvs/srv/Trigger   # change belt speed
+ros2 topic echo /mrf/perception/objects   # the perception interface
+ros2 topic echo /mrf/arm1/stats            # recovered count
+ros2 topic echo /mrf/objects/stats         # spawned / on_belt / missed
+ros2 topic echo /mrf/conveyor/state        # RUNNING_FAST | MEDIUM | SLOW (never STOPPED)
 ```
 
 ## Design notes
 
-- **Grasping is kinematic.** Form-closure grasping is unreliable in Gazebo
-  Classic, so a committed pick "claims" the object (the generator stops moving
-  it) and the coordinator slaves its pose to the live tool-centre point until
-  it is released over the bin. The gripper fingers are cosmetic.
+- **Grasping is kinematic**: a committed pick "claims" the object (the generator
+  stops moving it) and the coordinator slaves its pose to the live tool-centre
+  point until it is released over the bin. Form-closure grasping is unreliable in
+  Gazebo Classic, so the claw fingers are cosmetic.
 - **IK** is a closed-form solution for the 6R-with-spherical-wrist arm
   (`mrf_coordinator/ik.py`); run `python3 ik.py` for the FK∘IK self-test.
+- Category→bin routing lives in `coordinator.py` (`BINS` map); the bins are
+  arranged in a reachable arc behind the arm. Object types and their geometry
+  live in `object_manager.py` (`CATEGORIES`).
 - Kinematic constants are shared between `kr_arm.xacro` and `ik.py` — keep them
   in sync if you change link lengths.

@@ -16,7 +16,7 @@ from gazebo_msgs.msg import ModelStates
 from geometry_msgs.msg import Vector3
 from mrf_msgs.msg import PerceivedObject, PerceivedObjectArray
 
-KNOWN = ('plastic', 'aluminum', 'cardboard')
+KNOWN = ('plastic', 'metal', 'glass', 'paper')
 
 
 class Perception(Node):

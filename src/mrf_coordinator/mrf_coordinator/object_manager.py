@@ -22,11 +22,42 @@ from std_msgs.msg import Float64, String
 from gazebo_msgs.srv import SpawnEntity, DeleteEntity, SetEntityState
 from gazebo_msgs.msg import EntityState
 
-# category -> (sdf-shape, rgba, half_height, mass)
+# Four realistic recyclable types, built from several primitives around the
+# model origin (= grasp point). Each part: geometry + material.
+#   geometry g: ('cyl', radius, length, z) | ('box', sx, sy, sz, z)
+#   material m: {'script': 'MRF/...'}  (textured)  OR
+#               {'rgba': (r,g,b), 'transp': 0..1, 'spec': '<ogre specular>'}
+#   col=True marks the part that carries collision (the main body).
+# 'half' = body half-height (sets the spawn rest height).
+GLASS = '0.95 0.95 0.95 1 90'      # very glossy
+CLEAR = '0.8 0.8 0.8 1 60'
+METAL = '0.9 0.9 0.9 1 80'
+
 CATEGORIES = {
-    'plastic':  ('cylinder', (0.1, 0.8, 0.2, 1), 0.06, 0.05),   # green bottle
-    'aluminum': ('box',      (0.6, 0.6, 0.62, 1), 0.035, 0.08),  # grey can/cube
-    'cardboard': ('box',     (0.72, 0.55, 0.3, 1), 0.045, 0.04),  # tan box (decoy)
+    # clear PET water bottle: translucent body + shoulder/neck, blue cap, label band
+    'plastic': dict(half=0.055, mass=0.04, parts=[
+        dict(g=('cyl', 0.032, 0.11, 0.0),    m=dict(rgba=(0.72, 0.86, 0.96), transp=0.5, spec=CLEAR), col=True),
+        dict(g=('cyl', 0.015, 0.035, 0.072), m=dict(rgba=(0.72, 0.86, 0.96), transp=0.5, spec=CLEAR)),
+        dict(g=('cyl', 0.017, 0.020, 0.097), m=dict(rgba=(0.10, 0.30, 0.70))),                 # cap
+        dict(g=('cyl', 0.0335, 0.05, -0.005), m=dict(script='MRF/BottleLabel')),               # label band
+    ]),
+    # aluminium soda can: wrapped label + silver top/bottom rims
+    'metal': dict(half=0.0475, mass=0.06, parts=[
+        dict(g=('cyl', 0.033, 0.095, 0.0),  m=dict(script='MRF/CanLabel'), col=True),
+        dict(g=('cyl', 0.030, 0.008, 0.050), m=dict(rgba=(0.82, 0.82, 0.85), spec=METAL)),
+        dict(g=('cyl', 0.030, 0.008, -0.050), m=dict(rgba=(0.82, 0.82, 0.85), spec=METAL)),
+    ]),
+    # green glass bottle: glossy translucent body + neck, dark cap, paper label
+    'glass': dict(half=0.065, mass=0.10, parts=[
+        dict(g=('cyl', 0.030, 0.13, 0.0),   m=dict(rgba=(0.10, 0.45, 0.20), transp=0.4, spec=GLASS), col=True),
+        dict(g=('cyl', 0.013, 0.05, 0.090), m=dict(rgba=(0.10, 0.45, 0.20), transp=0.4, spec=GLASS)),
+        dict(g=('cyl', 0.015, 0.015, 0.122), m=dict(rgba=(0.15, 0.15, 0.15))),                  # cap
+        dict(g=('cyl', 0.0315, 0.04, -0.010), m=dict(script='MRF/GlassLabel')),                 # label
+    ]),
+    # kraft paper carton
+    'paper': dict(half=0.0375, mass=0.03, parts=[
+        dict(g=('box', 0.085, 0.065, 0.075, 0.0), m=dict(script='MRF/Cardboard'), col=True),
+    ]),
 }
 
 BELT_Y = -0.55
@@ -40,26 +71,53 @@ def euler_to_quat(yaw):
     return (0.0, 0.0, math.sin(yaw / 2.0), math.cos(yaw / 2.0))
 
 
+def _geom(g):
+    if g[0] == 'cyl':
+        _, radius, length, z = g
+        return z, f'<cylinder><radius>{radius:.4f}</radius><length>{length:.4f}</length></cylinder>'
+    _, sx, sy, sz, z = g
+    return z, f'<box><size>{sx:.4f} {sy:.4f} {sz:.4f}</size></box>'
+
+
+def _material(m):
+    if 'script' in m:
+        return (f"""<material><script>
+          <uri>model://recyclables/materials/scripts</uri>
+          <uri>model://recyclables/materials/textures</uri>
+          <name>{m['script']}</name></script></material>""")
+    r, g, b = m['rgba']
+    spec = m.get('spec', '0.1 0.1 0.1 1 1')
+    return (f"<material><ambient>{r} {g} {b} 1</ambient><diffuse>{r} {g} {b} 1</diffuse>"
+            f"<specular>{spec}</specular></material>")
+
+
 def make_sdf(name, cat):
-    shape, rgba, half, mass = CATEGORIES[cat]
-    r, g, b, a = rgba
-    if shape == 'cylinder':
-        geom = f'<cylinder><radius>0.03</radius><length>{half*2:.3f}</length></cylinder>'
-    else:
-        s = half * 2
-        geom = f'<box><size>{s:.3f} {s:.3f} {s:.3f}</size></box>'
+    spec = CATEGORIES[cat]
+    elems = []
+    for i, part in enumerate(spec['parts']):
+        z, geom = _geom(part['g'])
+        m = part['m']
+        transp = m.get('transp', 0.0)
+        elems.append(f"""      <visual name='v{i}'>
+        <pose>0 0 {z:.4f} 0 0 0</pose>
+        <geometry>{geom}</geometry>
+        <transparency>{transp}</transparency>
+        {_material(m)}
+      </visual>""")
+        if part.get('col'):
+            elems.append(f"""      <collision name='c{i}'>
+        <pose>0 0 {z:.4f} 0 0 0</pose>
+        <geometry>{geom}</geometry>
+      </collision>""")
     return f"""<?xml version='1.0'?>
 <sdf version='1.6'>
   <model name='{name}'>
     <link name='link'>
-      <inertial><mass>{mass}</mass>
+      <inertial><mass>{spec['mass']}</mass>
         <inertia><ixx>1e-4</ixx><iyy>1e-4</iyy><izz>1e-4</izz>
                  <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia>
       </inertial>
-      <visual name='v'><geometry>{geom}</geometry>
-        <material><ambient>{r} {g} {b} {a}</ambient><diffuse>{r} {g} {b} {a}</diffuse></material>
-      </visual>
-      <collision name='c'><geometry>{geom}</geometry></collision>
+{chr(10).join(elems)}
     </link>
   </model>
 </sdf>"""
@@ -69,7 +127,8 @@ class ObjectManager(Node):
     def __init__(self):
         super().__init__('object_manager')
         self.declare_parameter('spawn_period', 4.0)
-        self.declare_parameter('category_weights', [0.6, 0.25, 0.15])  # plastic/alu/card
+        # plastic / metal / glass / paper
+        self.declare_parameter('category_weights', [0.25, 0.25, 0.25, 0.25])
         self.declare_parameter('y_jitter', 0.12)
         self.declare_parameter('max_objects', 10)
 
@@ -79,18 +138,12 @@ class ObjectManager(Node):
         self.max_objects = self.get_parameter('max_objects').value
 
         self.belt_speed = 0.10
-        self.declare_parameter('reject_bin_x', 1.80)
-        self.declare_parameter('reject_bin_y', -0.55)
-        self.reject_xy = (self.get_parameter('reject_bin_x').value,
-                          self.get_parameter('reject_bin_y').value)
 
         self.objects = {}     # name -> {'cat','half'}  (only belt-borne ones)
         self.claimed = set()  # names the robot now owns
         self.counter = 0
         self.n_spawned = 0
-        self.n_rejected = 0       # reached belt end -> dropped in reject bin
-        self.reject_count = 0
-        self.reject_slots = {}    # FIFO-recycled grid slots in the reject bin
+        self.n_missed = 0         # left the workspace unpicked
 
         self.spawn_cli = self.create_client(SpawnEntity, '/spawn_entity')
         self.del_cli = self.create_client(DeleteEntity, '/delete_entity')
@@ -129,7 +182,7 @@ class ObjectManager(Node):
             return
         cats = list(CATEGORIES.keys())
         cat = random.choices(cats, weights=self.weights[:len(cats)])[0]
-        half = CATEGORIES[cat][2]
+        half = CATEGORIES[cat]['half']
         self.counter += 1
         name = f'{cat}__obj_{self.counter:03d}'
 
@@ -171,26 +224,13 @@ class ObjectManager(Node):
                 continue
             o['x'] += self.belt_speed * dt
             if o['x'] > X_EXIT:
-                # not recovered by the arms -> drops into the reject bin at the
-                # end of the belt (instead of being deleted/lost)
-                self.collect_reject(name)
+                # left the workspace unpicked -> removed and counted as missed
+                self.delete(name)
                 self.objects.pop(name, None)
-                self.n_rejected += 1
-                self.get_logger().info(f'{name} reached belt end -> reject bin')
+                self.n_missed += 1
+                self.get_logger().info(f'{name} left workspace -> MISSED')
                 continue
             self.set_pose(name, o['x'], o['y'], o['z'])
-
-    def collect_reject(self, name):
-        rx, ry = self.reject_xy
-        slot = self.reject_count % 9
-        self.reject_count += 1
-        gx = (slot % 3 - 1) * 0.12
-        gy = (slot // 3 - 1) * 0.12
-        old = self.reject_slots.get(slot)
-        if old:
-            self.delete(old)
-        self.reject_slots[slot] = name
-        self.set_pose(name, rx + gx, ry + gy, 0.10)
 
     def set_pose(self, name, x, y, z):
         req = SetEntityState.Request()
@@ -211,7 +251,7 @@ class ObjectManager(Node):
 
     def publish_stats(self):
         msg = (f'spawned={self.n_spawned} on_belt={len(self.objects)} '
-               f'claimed={len(self.claimed)} rejected={self.n_rejected}')
+               f'claimed={len(self.claimed)} missed={self.n_missed}')
         self.stats_pub.publish(String(data=msg))
 
 

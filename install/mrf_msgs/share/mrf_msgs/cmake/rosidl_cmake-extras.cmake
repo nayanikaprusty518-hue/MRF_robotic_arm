@@ -1,1 +1,0 @@
-/home/nayanika/robotic_arm_ws/build/mrf_msgs/rosidl_cmake/rosidl_cmake-extras.cmake

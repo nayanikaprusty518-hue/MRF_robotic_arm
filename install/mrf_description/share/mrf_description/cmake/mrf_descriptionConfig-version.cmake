@@ -1,1 +1,0 @@
-/home/nayanika/robotic_arm_ws/build/mrf_description/ament_cmake_core/mrf_descriptionConfig-version.cmake

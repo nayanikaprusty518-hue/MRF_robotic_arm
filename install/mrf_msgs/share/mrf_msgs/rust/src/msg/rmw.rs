@@ -1,1 +1,0 @@
-/home/nayanika/robotic_arm_ws/build/mrf_msgs/rosidl_generator_rs/mrf_msgs/rust/src/msg/rmw.rs

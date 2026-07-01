@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="recycle_bins">
+    <static>true</static>
+    <link name="link">
+      <visual name="plastic_floor_v"><pose>-0.540 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry>
+        <material><ambient>0.1 0.35 0.85 1</ambient><diffuse>0.1 0.35 0.85 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="plastic_floor_c"><pose>-0.540 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry></collision>
+      <visual name="plastic_n_v"><pose>-0.540 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.1 0.35 0.85 1</ambient><diffuse>0.1 0.35 0.85 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="plastic_n_c"><pose>-0.540 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="plastic_s_v"><pose>-0.540 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.1 0.35 0.85 1</ambient><diffuse>0.1 0.35 0.85 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="plastic_s_c"><pose>-0.540 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="plastic_e_v"><pose>-0.400 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.1 0.35 0.85 1</ambient><diffuse>0.1 0.35 0.85 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="plastic_e_c"><pose>-0.400 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="plastic_w_v"><pose>-0.680 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.1 0.35 0.85 1</ambient><diffuse>0.1 0.35 0.85 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="plastic_w_c"><pose>-0.680 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="plastic_label_v"><pose>-0.540 0.342 0.170 0 0 0</pose>
+        <geometry><box><size>0.22 0.012 0.18</size></box></geometry>
+        <material><script>
+          <uri>model://recycle_bins/materials/scripts</uri>
+          <uri>model://recycle_bins/materials/textures</uri>
+          <name>MRF/Label_plastic</name></script></material></visual>
+      <visual name="metal_floor_v"><pose>-0.180 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry>
+        <material><ambient>0.95 0.78 0.1 1</ambient><diffuse>0.95 0.78 0.1 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="metal_floor_c"><pose>-0.180 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry></collision>
+      <visual name="metal_n_v"><pose>-0.180 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.95 0.78 0.1 1</ambient><diffuse>0.95 0.78 0.1 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="metal_n_c"><pose>-0.180 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="metal_s_v"><pose>-0.180 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.95 0.78 0.1 1</ambient><diffuse>0.95 0.78 0.1 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="metal_s_c"><pose>-0.180 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="metal_e_v"><pose>-0.040 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.95 0.78 0.1 1</ambient><diffuse>0.95 0.78 0.1 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="metal_e_c"><pose>-0.040 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="metal_w_v"><pose>-0.320 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.95 0.78 0.1 1</ambient><diffuse>0.95 0.78 0.1 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="metal_w_c"><pose>-0.320 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="metal_label_v"><pose>-0.180 0.342 0.170 0 0 0</pose>
+        <geometry><box><size>0.22 0.012 0.18</size></box></geometry>
+        <material><script>
+          <uri>model://recycle_bins/materials/scripts</uri>
+          <uri>model://recycle_bins/materials/textures</uri>
+          <name>MRF/Label_metal</name></script></material></visual>
+      <visual name="glass_floor_v"><pose>0.180 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry>
+        <material><ambient>0.2 0.65 0.25 1</ambient><diffuse>0.2 0.65 0.25 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="glass_floor_c"><pose>0.180 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry></collision>
+      <visual name="glass_n_v"><pose>0.180 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.2 0.65 0.25 1</ambient><diffuse>0.2 0.65 0.25 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="glass_n_c"><pose>0.180 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="glass_s_v"><pose>0.180 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.2 0.65 0.25 1</ambient><diffuse>0.2 0.65 0.25 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="glass_s_c"><pose>0.180 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="glass_e_v"><pose>0.320 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.2 0.65 0.25 1</ambient><diffuse>0.2 0.65 0.25 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="glass_e_c"><pose>0.320 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="glass_w_v"><pose>0.040 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.2 0.65 0.25 1</ambient><diffuse>0.2 0.65 0.25 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="glass_w_c"><pose>0.040 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="glass_label_v"><pose>0.180 0.342 0.170 0 0 0</pose>
+        <geometry><box><size>0.22 0.012 0.18</size></box></geometry>
+        <material><script>
+          <uri>model://recycle_bins/materials/scripts</uri>
+          <uri>model://recycle_bins/materials/textures</uri>
+          <name>MRF/Label_glass</name></script></material></visual>
+      <visual name="paper_floor_v"><pose>0.540 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry>
+        <material><ambient>0.45 0.3 0.16 1</ambient><diffuse>0.45 0.3 0.16 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="paper_floor_c"><pose>0.540 0.500 0.020 0 0 0</pose>
+        <geometry><box><size>0.300 0.300 0.040</size></box></geometry></collision>
+      <visual name="paper_n_v"><pose>0.540 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.45 0.3 0.16 1</ambient><diffuse>0.45 0.3 0.16 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="paper_n_c"><pose>0.540 0.640 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="paper_s_v"><pose>0.540 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry>
+        <material><ambient>0.45 0.3 0.16 1</ambient><diffuse>0.45 0.3 0.16 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="paper_s_c"><pose>0.540 0.360 0.150 0 0 0</pose>
+        <geometry><box><size>0.300 0.020 0.300</size></box></geometry></collision>
+      <visual name="paper_e_v"><pose>0.680 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.45 0.3 0.16 1</ambient><diffuse>0.45 0.3 0.16 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="paper_e_c"><pose>0.680 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="paper_w_v"><pose>0.400 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry>
+        <material><ambient>0.45 0.3 0.16 1</ambient><diffuse>0.45 0.3 0.16 1</diffuse>
+                  <specular>0.05 0.05 0.05 1</specular></material></visual>
+      <collision name="paper_w_c"><pose>0.400 0.500 0.150 0 0 0</pose>
+        <geometry><box><size>0.020 0.300 0.300</size></box></geometry></collision>
+      <visual name="paper_label_v"><pose>0.540 0.342 0.170 0 0 0</pose>
+        <geometry><box><size>0.22 0.012 0.18</size></box></geometry>
+        <material><script>
+          <uri>model://recycle_bins/materials/scripts</uri>
+          <uri>model://recycle_bins/materials/textures</uri>
+          <name>MRF/Label_paper</name></script></material></visual>
+    </link>
+  </model>
+</sdf>

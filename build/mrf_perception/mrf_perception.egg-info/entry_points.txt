@@ -1,3 +1,0 @@
-[console_scripts]
-perception = mrf_perception.perception:main
-

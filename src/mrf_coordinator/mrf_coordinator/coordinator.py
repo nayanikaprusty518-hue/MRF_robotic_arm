@@ -30,6 +30,15 @@ GRIP_CLOSED = 0.9     # claw fingers curled in (revolute knuckles)
 ARM_J = ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6']
 GRIP_J = ['finger1_joint', 'finger2_joint', 'finger3_joint']
 
+# Single-arm sort: each waste category -> its colour-coded bin (world x,y).
+# Arranged in a reachable row behind the arm (must match recycle_bins model).
+BINS = {
+    'plastic': (-0.54, 0.50),   # blue
+    'metal':   (-0.18, 0.50),   # yellow
+    'glass':   (0.18, 0.50),    # green
+    'paper':   (0.54, 0.50),    # brown
+}
+
 
 def yaw_of(q):
     # yaw from a quaternion (z-w dominant assumed, but compute properly)
@@ -46,8 +55,8 @@ class Coordinator(Node):
         self.declare_parameter('joint_prefix', 'a1_')
         self.declare_parameter('arm_topic', '/arm1_controller/joint_trajectory')
         self.declare_parameter('grip_topic', '/gripper1_controller/joint_trajectory')
-        # which materials this arm recovers
-        self.declare_parameter('target_categories', ['plastic'])
+        # which materials this arm recovers (default: all four)
+        self.declare_parameter('target_categories', ['plastic', 'metal', 'glass', 'paper'])
         # arm mount pose in the world (matches the URDF world_joint)
         self.declare_parameter('base_x', 0.0)
         self.declare_parameter('base_y', 0.0)
@@ -59,13 +68,12 @@ class Coordinator(Node):
         self.declare_parameter('belt_half', 0.16)   # y half-width of grab band
         self.declare_parameter('catch_back', 0.06)  # grab window before pick_x
         self.declare_parameter('catch_ahead', 0.18) # ... and after
-        # bin (world) this arm drops into
-        self.declare_parameter('bin_x', -0.28)
-        self.declare_parameter('bin_y', 0.55)
 
         self.arm_name = self.get_parameter('arm_name').value
         self.jp = self.get_parameter('joint_prefix').value
-        self.targets = [c for c in self.get_parameter('target_categories').value if c] or ['plastic']
+        self.targets = [c for c in self.get_parameter('target_categories').value
+                        if c] or list(BINS)
+        self.bins = BINS
         self.bx = self.get_parameter('base_x').value
         self.by = self.get_parameter('base_y').value
         self.bz = self.get_parameter('base_z').value
@@ -75,7 +83,6 @@ class Coordinator(Node):
         self.belt_half = self.get_parameter('belt_half').value
         self.catch_back = self.get_parameter('catch_back').value
         self.catch_ahead = self.get_parameter('catch_ahead').value
-        self.bin_xy = (self.get_parameter('bin_x').value, self.get_parameter('bin_y').value)
 
         self.arm_joints = [self.jp + j for j in ARM_J]
         self.grip_joints = [self.jp + j for j in GRIP_J]
@@ -90,8 +97,8 @@ class Coordinator(Node):
         self.cur_q = {}
         self.n_recovered = 0
         self.n_ignored_seen = set()
-        self.bin_slots = {}
-        self.bin_count = 0
+        self.bin_slots = {}       # (cat, slot) -> object name
+        self.bin_count = {}       # cat -> count placed
 
         self.arm_pub = self.create_publisher(
             JointTrajectory, self.get_parameter('arm_topic').value, 10)
@@ -115,8 +122,8 @@ class Coordinator(Node):
 
         self.create_timer(0.05, self.tick)
         self.create_timer(1.0, self.publish_stats)
-        self.get_logger().info(f'[{self.arm_name}] up. Targets={self.targets} '
-                               f'pick_x={self.pick_x} bin={self.bin_xy}. Belt never stops.')
+        self.get_logger().info(f'[{self.arm_name}] up. Sorting {self.targets} '
+                               f'into {len(self.bins)} bins. Belt never stops.')
 
     # ---------- world <-> base transforms (arm mounted upright, yaw only) ----------
     def world_to_base(self, P):
@@ -199,28 +206,31 @@ class Coordinator(Node):
         req.state = st
         self.set_cli.call_async(req)
 
-    def store_in_bin(self, name):
-        """Place a recovered object in a tidy single-layer 3x3 grid inside the
-        bin. Slots are recycled FIFO (oldest deleted) so the bin never piles up
-        and ejects objects via overlap."""
-        binx, biny = self.bin_xy
-        slot = self.bin_count % 9
-        self.bin_count += 1
-        gx = (slot % 3 - 1) * 0.10
-        gy = (slot // 3 - 1) * 0.10
-        old = self.bin_slots.get(slot)
+    def store_in_bin(self, name, cat):
+        """Place a recovered object in a tidy single-layer 3x3 grid inside its
+        category's bin. Slots are recycled FIFO (oldest deleted) so a bin never
+        piles up and ejects objects via overlap."""
+        binx, biny = self.bins[cat]
+        i = self.bin_count.get(cat, 0)
+        self.bin_count[cat] = i + 1
+        slot = i % 9
+        gx = (slot % 3 - 1) * 0.06
+        gy = (slot // 3 - 1) * 0.06
+        old = self.bin_slots.get((cat, slot))
         if old:
             req = DeleteEntity.Request(); req.name = old
             self.del_cli.call_async(req)
-        self.bin_slots[slot] = name
-        self.place_object(binx + gx, biny + gy, 0.10)   # rest on bin floor, no overlap
+        self.bin_slots[(cat, slot)] = name
+        self.place_object(binx + gx, biny + gy, 0.12)   # rest on bin floor, no overlap
 
     # ---------- selection (sections 34-37, 39) ----------
     def plan_pick(self, obj):
         """Return joint vectors for each phase (computed in this arm's base
         frame from world poses), or None if infeasible."""
         wx, wy, wz = obj.pose.position.x, obj.pose.position.y, obj.pose.position.z
-        binx, biny = self.bin_xy
+        if obj.category not in self.bins:
+            return None
+        binx, biny = self.bins[obj.category]
         grasp = self.world_to_base([wx, wy, wz])
         hover = self.world_to_base([wx, wy, self.bz + 0.30])
         binp = self.world_to_base([binx, biny, self.bz + 0.20])
@@ -291,6 +301,7 @@ class Coordinator(Node):
                 return
             obj, plan = sel
             self.active = obj.object_id
+            self.active_cat = obj.category
             self.plan = plan
             self.claim_pub.publish(String(data=self.active))  # robot owns it now
             self.get_logger().info(f'[{self.arm_name}] intercepting {self.active} '
@@ -313,12 +324,12 @@ class Coordinator(Node):
             self.enter('LIFT', 0.7)
 
         elif self.state == 'LIFT':
-            self.send_arm(self.plan['bin'], 1.0)
-            self.enter('TO_BIN', 1.15)
+            self.send_arm(self.plan['bin'], 1.5)      # larger swing to bins behind
+            self.enter('TO_BIN', 1.65)
 
         elif self.state == 'TO_BIN':
             self.send_grip(GRIP_OPEN, 0.5)
-            self.store_in_bin(self.active)
+            self.store_in_bin(self.active, self.active_cat)
             self.carrying = False
             self.release_pub.publish(String(data=self.active))
             self.n_recovered += 1
@@ -329,8 +340,8 @@ class Coordinator(Node):
             self.enter('RELEASE', 0.4)
 
         elif self.state == 'RELEASE':
-            self.send_arm(self.home_q, 0.9)
-            self.enter('IDLE', 1.0)
+            self.send_arm(self.home_q, 1.3)           # swing back from the bins
+            self.enter('IDLE', 1.4)
 
     def publish_stats(self):
         self.stats_pub.publish(String(

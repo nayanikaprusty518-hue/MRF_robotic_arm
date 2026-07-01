@@ -1,0 +1,32 @@
+material MRF/Label_plastic
+{
+  technique { pass {
+    ambient 0.7 0.7 0.7 1.0
+    diffuse 1.0 1.0 1.0 1.0
+    texture_unit { texture plastic.png filtering trilinear }
+  } }
+}
+material MRF/Label_metal
+{
+  technique { pass {
+    ambient 0.7 0.7 0.7 1.0
+    diffuse 1.0 1.0 1.0 1.0
+    texture_unit { texture metal.png filtering trilinear }
+  } }
+}
+material MRF/Label_glass
+{
+  technique { pass {
+    ambient 0.7 0.7 0.7 1.0
+    diffuse 1.0 1.0 1.0 1.0
+    texture_unit { texture glass.png filtering trilinear }
+  } }
+}
+material MRF/Label_paper
+{
+  technique { pass {
+    ambient 0.7 0.7 0.7 1.0
+    diffuse 1.0 1.0 1.0 1.0
+    texture_unit { texture paper.png filtering trilinear }
+  } }
+}

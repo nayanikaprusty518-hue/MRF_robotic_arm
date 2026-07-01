@@ -1,1 +1,0 @@
-/home/nayanika/robotic_arm_ws/build/mrf_gazebo/ament_cmake_environment_hooks/local_setup.zsh

@@ -1,1 +1,0 @@
-/home/nayanika/robotic_arm_ws/build/mrf_msgs/rosidl_generator_c/mrf_msgs/msg/perceived_object_array.h
