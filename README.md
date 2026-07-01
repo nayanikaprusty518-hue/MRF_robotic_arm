@@ -5,7 +5,6 @@ A ROS 2 Humble + Gazebo Classic 11 simulation of a **Material Recovery Facility
 of recyclable waste and sorts each into its own colour-coded bin, inside a
 guarded warehouse environment.
 
-![reference](image.png)
 
 ## What it does
 
